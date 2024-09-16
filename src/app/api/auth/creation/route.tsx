@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
-    return NextResponse.redirect("http://localhost:3000");
+    return NextResponse.redirect("https://airbnbclone-kappa-inky.vercel.app");
   }
   let dbUser = await prisma.user.findUnique({
     where: {
@@ -25,5 +25,5 @@ export async function GET(request: Request) {
       },
     });
   }
-  return NextResponse.redirect("http://localhost:3000");
+  return NextResponse.redirect("https://airbnbclone-kappa-inky.vercel.app");
 }

@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div>
     <div className="">
-      <h1 className="text-2xl mt-5 font-semibold tracking-tighter">
+      <h1 className="text-2xl text-center mt-5 font-semibold tracking-tighter">
         welcome to decription Page
       </h1>
       <DescriptionForm />

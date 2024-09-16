@@ -53,11 +53,10 @@ export default async function Home({ searchParams }: searchParamsProps) {
 
   return (
     <div>
-      <Button>Hello world</Button>
       <MapFilterItems />
       {data.length > 0 ? (
         <Suspense fallback={<Skeleton />}>
-          <div className="grid grid-cols-4 gap-5 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 w-full">
             {data.map((item) => {
               return (
                 <ListingCard

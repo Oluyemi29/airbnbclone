@@ -4,8 +4,8 @@ import LocationForm from "../_components/LocationForm";
 
 const page = () => {
   return (
-    <div>
-      <h1 className="text-xl font-bold">Where is your Home located</h1>
+    <div className="">
+      <h1 className="text-xl text-center my-4 font-bold">Where is your Home located</h1>
       <LocationForm />
     </div>
   );

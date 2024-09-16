@@ -21,7 +21,7 @@ const Map = ({ locationValue }: LocationValueProps) => {
       scrollWheelZoom={false}
       zoom={5}
       center={latLong?.latLang || [51.505, -0.09]}
-      className="w-[50%] rounded-md h-[50vh]"
+      className="w-full rounded-md h-[50vh]"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

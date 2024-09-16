@@ -16,14 +16,14 @@ const SelectedCategory = () => {
   );
   const { handleSubmit } = useForm();
   const submit = () => {
-    createAirbnb(selectedCate)
+    createAirbnb(selectedCate);
     console.log(selectedCate);
   };
 
   return (
     <div>
       <form method="post" onSubmit={handleSubmit(submit)} action="">
-        <div className="flex flex-wrap gap-10 mb-20 justify-center w-full">
+        <div className="flex mt-5 flex-wrap gap-10 mb-20 justify-center w-full">
           {categoryItems?.map((items, index) => {
             return (
               <div
@@ -38,7 +38,7 @@ const SelectedCategory = () => {
                     setSelectedCate(items.name);
                   }}
                 >
-                  <CardHeader>
+                  <CardHeader className="text-center">
                     <Image
                       src={items.imageUrl}
                       width={100}
@@ -48,6 +48,7 @@ const SelectedCategory = () => {
                       quality={95}
                       className=""
                     />
+                    <p className="font-bold">{items.name}</p>
                   </CardHeader>
                 </Card>
               </div>

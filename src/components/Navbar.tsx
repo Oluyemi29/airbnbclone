@@ -30,9 +30,6 @@ const Navbar = () => {
         <div>
           <Image src={"/airbnb.png"} alt="" width={80} height={50} />
         </div>
-        {/* <div className="px-5 py-2 rounded-3xl border-2">
-          <h1 className="text-sm">Hello from the search</h1>
-        </div> */}
         <SearchComponent/>
         <div className=" flex px-5 py-2 rounded-3xl border-2 gap-2 items-center">
           <Rows3 size={23} />

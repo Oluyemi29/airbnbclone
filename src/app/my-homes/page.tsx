@@ -9,6 +9,9 @@ import FavouriteLoading from "../favourite/FavouriteLoading";
 const page = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  if (!user) {
+    return redirect("/");
+  }
   const data = await prisma.home.findMany({
     where: {
       userId: user?.id,
@@ -32,12 +35,9 @@ const page = async () => {
       createdAt: "desc",
     },
   });
-  if (!user.id) {
-    return redirect("/");
-  }
   return (
     <div className="container">
-      <h1 className="text-2xl font-semibold">Your Home</h1>
+      <h1 className="text-2xl my-4 font-semibold">Your Home</h1>
       {data.length === 0 ? (
         <>
           <NoItems />
@@ -45,7 +45,7 @@ const page = async () => {
       ) : (
         <>
           <Suspense fallback={<FavouriteLoading />}>
-            <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-2">
+            <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 grid-cols-1">
               {data.map((item, index) => {
                 return (
                   <div key={index}>

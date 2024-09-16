@@ -33,7 +33,7 @@ const page = async () => {
   });
   return (
     <div>
-      <h1 className="text-3xl font-semibold tracking-tight">
+      <h1 className="text-3xl my-4 font-semibold tracking-tight">
         Your Reservation are here
       </h1>
 
@@ -44,7 +44,7 @@ const page = async () => {
       ) : (
         <>
           <Suspense fallback={<FavouriteLoading />}>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               {data.map((item) => {
                 return (
                   <ListingCard

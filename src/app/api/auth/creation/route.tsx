@@ -5,9 +5,8 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log(user);
-  if (!user || user === null || !user.id) {
-    throw new Error("something went wrong when registering");
+  if (!user) {
+    return NextResponse.redirect("http://localhost:3000");
   }
   let dbUser = await prisma.user.findUnique({
     where: {

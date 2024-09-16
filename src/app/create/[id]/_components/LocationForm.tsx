@@ -22,7 +22,7 @@ const LocationForm = () => {
   const LazyMap = dynamic(() => import("@/components/Map"), {
     ssr: false,
     loading: () => {
-      return <Skeleton className="h-[50vh] w-[50%]" />;
+      return <Skeleton className="h-[50vh] w-full" />;
     },
   });
 
@@ -41,24 +41,26 @@ const LocationForm = () => {
   return (
     <div>
       <form action="" method="post" onSubmit={handleSubmit(submit)}>
-        <div>
-          <Select
-            label="Select an animal"
-            onChange={(e: any) => {
-              setLocationValue(e.target.value);
-            }}
-            className="max-w-xs"
-          >
-            {getCont.map((county, index) => (
-              <SelectItem
-                key={county.name}
-                value={county.name}
-              >{`${county.flag} ${county.name} - ${county.region}`}</SelectItem>
-            ))}
-          </Select>
-        </div>
-        <div className="mt-5">
-          <LazyMap locationValue={locationValue} />
+        <div className="flex flex-col justify-center items-center">
+          <div className="md:w-[40%] w-full">
+            <Select
+              label="Select a Country"
+              onChange={(e: any) => {
+                setLocationValue(e.target.value);
+              }}
+              className="w-full"
+            >
+              {getCont.map((county, index) => (
+                <SelectItem
+                  key={county.name}
+                  value={county.name}
+                >{`${county.flag} ${county.name} - ${county.region}`}</SelectItem>
+              ))}
+            </Select>
+          </div>
+          <div className="mt-5 w-full md:w-[40%]">
+            <LazyMap locationValue={locationValue} />
+          </div>
         </div>
         <SubmitButton />
       </form>

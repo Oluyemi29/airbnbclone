@@ -4,6 +4,7 @@ import "./globals.css";
 import AppProvider from "@/components/AppProvider";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "react-hot-toast";
+import SearchContext from "@/components/SearchContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppProvider>
-          <Toaster />
-          <Navbar />
-          {children}
+          <SearchContext>
+            <Toaster />
+            <Navbar />
+            {children}
+          </SearchContext>
         </AppProvider>
       </body>
     </html>

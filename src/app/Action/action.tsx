@@ -164,3 +164,14 @@ export const createReservation = async ({
   });
   return redirect("/");
 };
+
+type serchCompo = {
+  locationValue: string;
+  guestCount: number;
+  bedCount: number;
+  bathCount: number;
+};
+
+export const serchCompo = async ({bathCount,bedCount,guestCount,locationValue}:serchCompo) => {
+  
+};

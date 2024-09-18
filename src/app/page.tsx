@@ -1,3 +1,4 @@
+"use server";
 import ListingCard from "@/components/ListingCard";
 import MapFilterItems from "@/components/MapFilterItems";
 import NoItems from "@/components/NoItems";
@@ -11,15 +12,27 @@ import { Suspense } from "react";
 type searchParamsProps = {
   searchParams?: {
     filter?: string;
+    country?: string;
+    guest?: number;
+    bedroom?: number;
+    bathroom?: number;
   };
+};
+type searchProps = {
+  guestCount: number;
+  bathCount: number;
+  bedCount: number;
+  locationValue: any;
 };
 
 export default async function Home({ searchParams }: searchParamsProps) {
-  // console.log(searchParams?.filter);
   const filter = searchParams?.filter;
+  const country = searchParams?.country;
+  const guest = searchParams?.guest?.toString();
+  const bedroom = searchParams?.bedroom?.toString();
+  const bathroom = searchParams?.bathroom?.toString();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log(user);
 
   const data = await prisma.home.findMany({
     where: {
@@ -27,6 +40,10 @@ export default async function Home({ searchParams }: searchParamsProps) {
       addedDescription: true,
       addedLocation: true,
       categoryName: filter ?? undefined,
+      country: country ?? undefined,
+      guests: guest ?? undefined,
+      bedrooms: bedroom ?? undefined,
+      bathrooms: bathroom ?? undefined,
     },
     select: {
       photo: true,
@@ -42,14 +59,6 @@ export default async function Home({ searchParams }: searchParamsProps) {
     },
   });
 
-  // const fav = data.map((ite) => {
-  //   return ite.favourite;
-  // });
-  // console.log(
-  //   fav.map((myfav) => {
-  //     return myfav;
-  //   })
-  // );
 
   return (
     <div>
